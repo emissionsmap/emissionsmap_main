@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% include 'css.html' %}
+</head>
+
+<body>
+  <header>    
+    <div class="title">
+      <img src="{% static 'img/logo_imagen.png' %}" alt="">
+      <img src="{% static 'img/logo_letra.png' %}" alt="">
+    </div>
+    <div class="header__main">
+      <p >Team</p>
+      <p >Open Source</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="main__container" >
+      <div id="map"></div>
+    </div>
+    <div id="click__right__open">WORLD</div>
+    <div class="aside__right">
+      <div id="click__right__close">
+        <button>cerrar</button>
+      </div>
+      <div class="aside__right__main">
+        <div class="header__aside__movil">
+          <div class="title">
+            <img src="{% static 'img/logo_imagen.png' %}" alt="">
+            <img src="{% static 'img/logo_letra.png' %}" alt="">
+          </div>
+          <div class="header__main">
+            <p >Team</p>
+            <p >Open Source</p>
+          </div>
+        </div>
+        <div>
+            {% block contentplotly %}{% endblock contentplotly %}
+        </div>
+      </div>
+    </div>
+      
+    <div class="aside">
+      <div id="click__left__open">FILTERS</div>
+    </div>
+      
+    <div class="aside__left">
+      <div id="click__left__close">
+        <button>cerrar</button>
+      </div>
+      <div>
+        <div class="aright2">
+          <select name="select-age" id="select-age">
+            <option value="-1">Año</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+          </select>
+        </div>
+        <div>
+          {% block contentfilters %}{% endblock contentfilters %}
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  {% include 'js.html' %}
+</body>
+</html>

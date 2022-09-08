@@ -1,0 +1,95 @@
+Entidad;Atributo;Descripci�n;Obligaci�n /Condici�n;Tipo de dato;Ejemplo
+huella_biocapacidad;Anio;A�o del dato;Indexado;BIGINT;2022
+huella_biocapacidad;Poblacion;Poblaci�n a nivel mundial en millones;Indexado;DOUBLE;7,36
+huella_biocapacidad;Biocapacidad Percap;Representa la disponibilidad de superficie biol�gicamente productiva por habitante.  Unidad: gha/persona (1 gha es la capacidad productiva de 1 ha de tierra de producci�n media mundial);Indexado;DOUBLE;1,52
+huella_biocapacidad;Huella Ecologica Percap;Total de superficie ecol�gicamente productiva para producir los recursos consumidos por un habitante y los residuos que genera.  Unidad hgpc (hect�rea global per c�pita: la capacidad productiva de 1 ha de tierra de producci�n media mundial);Indexado;DOUBLE;2,28
+huella_biocapacidad;Tierra;Cociente  entre (huella ecologica/biocapacidad) define la cantidad de  planetas Tierra que se necesita para sustentar a la poblaci�n.;Indexado;DOUBLE;1,8
+huella_biocapacidad;Id_Anio;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+huella_sostenible_por_paiss;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+huella_sostenible_por_paiss;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Africa
+huella_sostenible_por_paiss;Indice ODS;Clasifica los pa�ses sobre la base de 17 ODS individuales,  indica la posici�n del pa�s entre los casos peor (0) y mejor (100).;Indexado;DOUBLE;58,3
+huella_sostenible_por_paiss;Expectativa De Vida;Es la media de la cantidad de a�os que vive una determinada poblaci�n total en un cierto per�odo.;Indexado;DOUBLE;85
+huella_sostenible_por_paiss;Indice de Desarrollo Humano;El �ndice de Desarrollo Humano (IDH) es una medida resumida del logro promedio en dimensiones clave del desarrollo humano: una vida larga y saludable, estar bien informado y tener un nivel de vida decente(entre 0,1 y 1,0).;Indexado;DOUBLE;0,75
+huella_sostenible_por_paiss;PiB Per Capita;Mide la producci�n econ�mica de una naci�n por persona determinando su prosperidad.;Indexado;DOUBLE;91608,03
+huella_sostenible_por_paiss;Ingresos;El Banco Mundial asigna las econom�as del mundo a cuatro grupos de ingresos:�pa�ses de ingresos bajos, medios-bajos, medianos-altos y de ingresos altos.;Indexado;Texto(TEXT);Ingresos Altos
+huella_sostenible_por_paiss;Poblaci�n;Cantidad de habitantes de un territorio, en millones.;Indexado;DOUBLE ;4,29
+huella_sostenible_por_paiss;Huella Carbono;La huella de carbono representa el volumen total de gases de efecto invernadero (GEI) que producen las actividades econ�micas y cotidianas del ser humano pasada por equivalencia a hg (hect�rea global);Indexado;DOUBLE ;2,7
+huella_sostenible_por_paiss;Huella Ecol�gica;"Total de superficie ecol�gicamente productiva para producir los recursos consumidos por un pais y los residuos que genera.  Unidad hg (hect�rea global)
+";Indexado;DOUBLE ;2,7
+huella_sostenible_por_paiss;Biocapacidad ;Representa la disponibilidad de superficie biol�gicamente productiva del pa�s.;Indexado;DOUBLE;2,8
+huella_sostenible_por_paiss;Tierra;Cociente  entre (huella ecologica/biocapacidad) define la cantidad de  planetas Tierra que se necesita para sustentar a la poblaci�n.;Indexado;DOUBLE;1,8
+huella_sostenible_por_paiss;Codigo;C�digos de pa�s de tres letras (Norma ISO 3166-1 alfa-3);Indexado; Texto(TEXT);ARG
+huella_sostenible_por_paiss;Id_Pais;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+primaria-sub-energia;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+primaria-sub-energia;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Africa
+primaria-sub-energia;Codigo;C�digos de pa�s de tres letras (Norma ISO 3166-1 alfa-3);Indexado; Texto(TEXT);ARG
+primaria-sub-energia;Anio;A�o del dato;Indexado;BIGINT;2022
+primaria-sub-energia;Eolico;Consumo proveniente de fuentes de energ�a e�lica en TWh (Teravatio/hora);Indexado;DOUBLE ;323,496124
+primaria-sub-energia;Hidroelectrico;Consumo proveniente de fuentes de energ�a hidroel�ctrica en TWh (Teravatio/hora);Indexado;DOUBLE ;145,496124
+primaria-sub-energia;Solar;Consumo proveniente de fuentes de energ�a solar en TWh (Teravatio/hora);Indexado;DOUBLE ;223,496124
+primaria-sub-energia;Nuclear;Consumo proveniente de fuentes de energ�a nuclear en TWh (Teravatio/hora);Indexado;DOUBLE ;65,496124
+primaria-sub-energia;Biocombustibles;Consumo proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;53,496124
+primaria-sub-energia;Biomasa;Consumo proveniente proveniente de biomasa en TWh (Teravatio/hora);Indexado;DOUBLE ;93,496124
+primaria-sub-energia;Carbon;Consumo proveniente de fuentes de carb�n en TWh (Teravatio/hora);Indexado;DOUBLE ;323,496124
+primaria-sub-energia;Petroleo;Consumo proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;83,496124
+primaria-sub-energia;Gas;Consumo proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;113,496124
+primaria-sub-energia;Id_Pais;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+sub-energia-fosil-renovables-nuclear;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+sub-energia-fosil-renovables-nuclear;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Africa
+sub-energia-fosil-renovables-nuclear;Codigo;C�digos de pa�s de tres letras (Norma ISO 3166-1 alfa-3);Indexado; Texto(TEXT);ARG
+sub-energia-fosil-renovables-nuclear;Anio;A�o del dato;Indexado;BIGINT;2022
+sub-energia-fosil-renovables-nuclear;Combustibles Fosiles;Porcentaje que representan los �combustibles f�siles�en la demanda de�energ�a primaria.;Indexado;DOUBLE ;93,87793
+sub-energia-fosil-renovables-nuclear;Renovables;Porcentaje que representan los �combustibles de fuente renovable�en la demanda de�energ�a primaria.;Indexado;DOUBLE ;6,122062
+sub-energia-fosil-renovables-nuclear;Nuclear;Porcentaje que representan los �combustibles de fuente nuclear�en la demanda de�energ�a primaria.;Indexado;DOUBLE ;12,36
+sub-energia-fosil-renovables-nuclear;Id_Pais;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+temperatura_anomalia;Anio;A�o del dato;Indexado;BIGINT;2022
+temperatura_anomalia;Anomalia  Media; Las anomal�as est�n referidas al promedio global del per�odo 1961/1990, que seg�n indican fue m�s c�lido que los anteriores en la mayor parte del globo,;Indexado;DOUBLE ;0.763
+temperatura_anomalia;Limite Superior;L�mite superior del intervalo de confianza (IC) del 95%.;Indexado;DOUBLE ;0.802
+temperatura_anomalia;Limite Inferior;L�mite inferior del intervalo de confianza (IC) del 95%.;Indexado;DOUBLE ;0.730
+temperatura_anomalia;Id_Anio;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+electricidad-prod-fuente-apilada;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+electricidad-prod-fuente-apilada;Codigo;C�digos de pa�s de tres letras (Norma ISO 3166-1 alfa-3);Indexado; Texto(TEXT);ARG
+electricidad-prod-fuente-apilada;Anio;A�o del dato;Indexado;BIGINT;2022
+electricidad-prod-fuente-apilada;Carbon;Producci�n de energ�a el�ctrica proveniente de fuentes de carb�n en TWh (Teravatio/hora);Indexado;DOUBLE ;323,496124
+electricidad-prod-fuente-apilada;Gas;Producci�n de energ�a el�ctrica proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;113,496124
+electricidad-prod-fuente-apilada;Hidroelectrica;Producci�n de energ�a el�ctrica proveniente de fuentes de energ�a hidroel�ctrica en TWh (Teravatio/hora);Indexado;DOUBLE ;145,496124
+electricidad-prod-fuente-apilada;Biocombustibles;Producci�n de energ�a el�ctrica proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;53,496124
+electricidad-prod-fuente-apilada;Solar;Producci�n de energ�a el�ctrica proveniente de fuentes de energ�a solar en TWh (Teravatio/hora);Indexado;DOUBLE ;223,496124
+electricidad-prod-fuente-apilada;Petroleo;Producci�n de energ�a el�ctrica proveniente de fuentes de biocombustibles en TWh (Teravatio/hora);Indexado;DOUBLE ;83,496124
+electricidad-prod-fuente-apilada;Eolica;Producci�n de energ�a el�ctrica proveniente de fuentes de energ�a e�lica en TWh (Teravatio/hora);Indexado;DOUBLE ;323,496124
+electricidad-prod-fuente-apilada;Nuclear;Producci�n de energ�a el�ctrica que representan los �combustibles de fuente nuclear�en la demanda de�energ�a primaria.;Indexado;DOUBLE ;12,36
+electricidad-prod-fuente-apilada;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Africa
+electricidad-prod-fuente-apilada;Id_Pais;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+electricidad-prod-fuente-apilada;Id_Anio;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+energiaco2;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+energiaco2;Combustible;Tipo de combustible.;Indexado; Texto(TEXT);Petroleo
+energiaco2;Anio;A�o del dato;Indexado;BIGINT;2022
+energiaco2;Consumo De Energ�a;Consumo de energ�a en el pa�s por tipo de fuente en BTU.;Indexado;DOUBLE ;292,8769
+energiaco2;Produci�n De Energ�a ;Producci�n de energ�a por tipo de fuente  del pa�s en BTU.;Indexado;DOUBLE ;323,496124
+energiaco2;PiB ;Mide la producci�n econ�mica de una naci�n determinando su prosperidad.;Indexado;DOUBLE;91608,03
+energiaco2;Poblacion;Poblaci�n a nivel mundial en millones;Indexado;DOUBLE;7,36
+energiaco2;Intensidad Energetica Per Capita;Es el cociente entre el consumo energ�tico y los habitantes, medido en BTU.;Indexado;DOUBLE ;11,59
+energiaco2;Intensidad Energetica Por Pib;Es el cociente entre el consumo energ�tico y el PiB, medido en BTU.;Indexado;DOUBLE ;11,59
+energiaco2;Emision De Co2;Emision de CO2 por pa�s;Indexado;DOUBLE ;192.83
+energiaco2;Consumo De Energia TWh;Consumo de energ�a en el pa�s por tipo de fuente en Teravatio/hora.;Indexado;DOUBLE ;1,87433E-08
+energiaco2;Produccion De Energia TWh;Producci�n de energ�a por tipo de fuente  del pa�s en Teravatio/hora.;Indexado;DOUBLE ;26
+energiaco2;Intensidad Energetica Per Capita TWh;Es el cociente entre el consumo energ�tico y los habitantes, medido en Teravatio/hora.;Indexado;DOUBLE ;1.97
+energiaco2;Intensidad Energetica Por Pib TWh;Es el cociente entre el consumo energ�tico y el PiB, medido en Teravatio/hora.;Indexado;DOUBLE ;1.31
+energiaco2;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Europa
+energiaco2;Id_Pa�s;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);f5a7924e621e84c9280a9a27e1bcb7f6
+energiaco2;Id_A�o;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Indexado; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+gases;Anio;A�o del dato;Indexado;BIGINT;2022
+gases;N2O Oxido Nitroso;Producci�n media anual de  �xido nitroso por pais en ppb (partes por bill�n).;Indexado;DOUBLE;293,56
+gases;SF6 Hexafluoruro de Azufre;Producci�n media anual de  Hexafluoruro de azufre por a�o en ppb (partes por bill�n).;Indexado;DOUBLE;9,64
+gases;CO2 Dioxido de Carbono;Producci�n media anual de  di�xido de carbono por a�o en ppm (partes por mill�n).;Indexado;DOUBLE;334,31
+gases;CH4 Metano;Producci�n media anual de  Metadno por a�o en ppb (partes por bill�n).;Indexado;DOUBLE;2,69
+gases;Id_Anio;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+planta-energia-global;Codigo;C�digos de pa�s de tres letras (Norma ISO 3166-1 alfa-3);Indexado; Texto(TEXT);ARG
+planta-energia-global;Pa�s;Nombre del Pa�s en ingl�s;Indexado; Texto(TEXT);Afghanistan
+planta-energia-global;Anio;A�o del dato;Indexado;BIGINT;2022
+planta-energia-global;Combustible Primario;;;;
+planta-energia-global;Generacion Gwh 2013 a Generacion Gwh 2019;;;;
+planta-energia-global;Id_Pais;C�digo obtenido mediante funcion hash aplicada al pa�s de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c
+planta-energia-global;Continente;Continente al que pertenece el pa�s.;Indexado; Texto(TEXT);Africa
+planta-energia-global;;;;;
+planta-energia-global;Id_Anio;C�digo obtenido mediante funcion hash aplicada al a�o de la emisi�n.;Clave Primaria; Texto(TEXT);e4dd5528f7596dcdf871aa55cfccc53c

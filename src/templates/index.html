@@ -1,9 +1,70 @@
-{% extends 'partials/base.html' %} {% load static %} {% block contentplotly %}
-<div id="click__right__close">
-  <a href="#"
+{% extends 'partials/base.html' %} {% load static %} 
+
+
+
+
+{% block contentcountry %}
+
+<div id="country__close" style="width: 50px;">
+  <a href="#" style="margin-left: 10px;width: 100%;height: 200px;"
+  ><i
+    class="fa-solid fa-angles-right fa-2x"
+    style="color: aliceblue"
+  ></i
+></a>
+</div>
+
+<div class="container__aside__country">
+  <div style="margin: 50px 50px 0 20px">
+    <h1>Canadá:</h1>
+    <p>Visualización de estadísticas por país</p>
+    
+    <div class="kpi">
+      <ul>
+        <li class="title__kpi">Intensidad de Carbono</li>
+        <li class="number__kpi">244 gr</li>
+      </ul>
+      <ul>
+        <li class="title__kpi">Huella ecológica</li>
+        <li class="number__kpi">2.73</li>
+      </ul>
+      <ul>
+        <li class="title__kpi">Tierra</li>
+        <li class="number__kpi">1.52</li>
+      </ul>
+    </div>
+
+    <hr />
+    <!-- <h2 class="loading">Esperando respuesta de la API...</h2> -->
+    <section class="container__aside__chart">
+      <figure>
+        <p>Gráfico de barras</p>
+        <h3>Emisiones por tipo de energía</h3>
+        <canvas id="chart5"></canvas>
+      </figure>
+    </section>
+    <section class="container__aside__chart">
+      <figure>
+        <p>Gráfico radar</p>
+        <h3>Emisiones por tipo de energía</h3>
+        <canvas id="chart6"></canvas>
+      </figure>
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock contentcountry %}
+{% block contentworld %}
+<div id="click__right__close" style="width: 50px;">
+  <a href="#" style="margin-left: 10px;width: 100%;height: 200px;"
     ><i
       class="fa-solid fa-angles-right fa-2x"
-      style="color: aliceblue; margin-left: 10px"
+      style="color: aliceblue"
     ></i
   ></a>
 </div>
@@ -63,7 +124,7 @@
     </section>
   </div>
 </div>
-{% endblock contentplotly %} {% block contentfilters %}
+{% endblock contentworld %} {% block contentfilters %}
 <div id="click__left__close">
   <button>cerrar</button>
 </div>

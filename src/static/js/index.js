@@ -21,13 +21,11 @@ const click__right__open = document.querySelector('#click__right__open')
 const click__right__close = document.querySelector('#click__right__close')
 
 click__right__open.addEventListener('click',()=>{
-    console.log('*********')
     aside__right.classList.add('move__right')
 })
 click__right__close.addEventListener('click',()=>{
     aside__right.classList.remove('move__right')
 })
-
 
 const grande    = document.querySelector('.bodycarrousel')
 const punto     = document.querySelectorAll('.punto')
@@ -45,4 +43,13 @@ punto.forEach( ( cadaPunto , i )=> {
         punto[i].classList.add('activo')
 
     })
+})
+
+
+const right__country = document.querySelector('.right__country')
+const country__close = document.querySelector('#country__close')
+
+country__close.addEventListener('click',()=>{
+    console.log('cerrado')
+    right__country.classList.remove('move__country')
 })

@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% include 'css.html' %}
+</head>
+
+<body>
+  <header>    
+    <div class="title">
+      <img src="static/img/logo_imagen.png" alt="">
+      <img src="static/img/logo_letra.png" alt="">
+    </div>
+    <nav class="stroke">
+      <ul>
+        <li id="team__submenu"><a href="#">Team</a></li>
+        <li><a href="#">Source</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="main__container" >
+      <div id="map"></div>
+    </div>
+    <div id="click__right__open">WORLD</div>
+    <div class="aside__right">
+      <div class="aside__right__main">
+        <div class="header__aside__movil">
+          <div class="title">
+            <img src="static/img/logo_imagen.png" alt="">
+            <img src="static/img/logo_letra.png" alt="">
+          </div>
+          <div class="header__main">
+            <p >Team</p>
+            <p >Open Source</p>
+          </div>
+        </div>
+            {% block contentplotly %}{% endblock contentplotly %}
+      </div>
+    </div>
+      
+    <div class="aside">
+      <div id="click__left__open" class="click__left__open">FILTERS</div>
+    </div>
+      
+    <div class="aside__left">
+      
+          {% block contentfilters %}{% endblock contentfilters %}
+      </div>
+    </div>
+    <div class="submenu">
+      <div class="card__submenu">
+        <img width="150px" src="https://media-exp1.licdn.com/dms/image/C5603AQGuEb1L6VGJ3w/profile-displayphoto-shrink_200_200/0/1620702778065?e=1668038400&v=beta&t=u_aDCMd0gfaoxQV439yi7LG5B2qjAs1GwXxjV9AspZI" alt="">
+        <h3><a href="#">Alex Rodriguez</a></h3>
+        <div class="item__submenu">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-square-github"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+        </div>
+      </div>
+      <div class="card__submenu">
+        <img width="150px" src="https://media-exp1.licdn.com/dms/image/C4E03AQFewS1wxZu6UA/profile-displayphoto-shrink_200_200/0/1588967774396?e=1668038400&v=beta&t=0-AgEN6h5quVGU6DPw24dEgR-4tpj-uxphD3i9JDgqg" alt="">
+        <h3><a href="#">Cristina Zamorano</a></h3>
+        <div class="item__submenu">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-square-github"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+        </div>
+      </div>
+      <div class="card__submenu">
+        <img width="150px" src="https://media-exp1.licdn.com/dms/image/C4E03AQFDu5YZfBh73w/profile-displayphoto-shrink_200_200/0/1516504639202?e=1668038400&v=beta&t=NJxCtHyJ_AY50DT1uWOD4ULHnZ4wufiugObMb_lRNn0" alt="">
+        <h3><a href="#">Helton Lirion</a></h3>
+        <div class="item__submenu">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-square-github"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+        </div>
+      </div>
+      <div class="card__submenu">
+        <img width="150px" src="https://media-exp1.licdn.com/dms/image/C4D03AQHjVFByF04Gog/profile-displayphoto-shrink_200_200/0/1631129368621?e=1668038400&v=beta&t=QBSG7XC5rebPhXmx4xuRjCGHmJGrxmQfd3YQjLmlqBs" alt="">
+        <h3><a href="#">Agustín Montero</a></h3>
+        <div class="item__submenu">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-square-github"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+        </div>
+      </div>
+      <div class="card__submenu">
+        <img width="150px" src="https://media-exp1.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1663113600&v=beta&t=_LHwEvBMefmjHp0DM5gifoDErL-tMBglex7dk4xR1SU" alt="">
+        <h3><a href="#">Geronimo Giggi</a></h3>
+        <div class="item__submenu">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-square-github"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {% include 'js.html' %}
+</body>
+</html>

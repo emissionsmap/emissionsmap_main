@@ -1,0 +1,145 @@
+/* --------------------- main ---------------------------- */
+.header__aside__movil{
+    display: none;
+}
+
+.aside {
+    position: fixed;
+    height: 92vh;
+    width: 120px;
+    color: var(--white-text-color);
+    transform: translate(0, -84vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.click__left__open {
+    margin-top: 80px;
+    width: 80px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    background-color: var(--default-bg-color);
+}
+
+
+#click__right__close{
+  height:100%;
+  align-self:center; 
+  width: 2vw;
+}
+
+
+.aright2 {
+    margin-top: 50px;
+    width: 80px;
+    height: 50px;
+}
+
+.aside__right,
+.aside__left {
+    position: fixed;
+    height: 92vh;
+    transition: 400ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+
+/* aside right */
+#click__right__open{
+    position: fixed;
+    background-color: var(--default-bg-color);
+    transform: translateY(-72vh);
+    right: 12px;
+    padding: 5px;
+    width: 35px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 10px;
+    cursor: pointer;
+    color: var(--white-text-color);
+}
+
+.click__left__open:hover,
+#click__right__open:hover{
+    background-color: var(--hover-text-color);
+    border: 1px solid var(--default-bg-color);
+    color: var(--default-bg-color);
+}
+
+.aside__right {  
+    width: 79vw;
+    transform: translate(100vw, -84vh);
+
+}
+
+.move__right {
+    transform: translate(22vw, -84vh);
+}
+
+.aside__right__main{
+    width: 100%;
+    display: flex;
+    background: var(--default-bg-color);
+    background: -webkit-linear-gradient(to top,#000508, #07374D, #000508);
+    background: linear-gradient(to top,#000508, #07374D, #000508);
+}
+
+
+.aside__left {
+    background-color: var(--default-bg-color);
+    width: 22vw;
+    transform: translate(-22vw, -84vh);
+}
+
+.move__left {
+    transform: translate(0, -84vh);
+}
+
+/* sub-menu */
+.submenu{
+    position: absolute;
+    width: 100vw;
+    background-color: var(--default-bg-color);
+    top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transform: translateY(-475px);
+    transition: 400ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+  
+  .card__submenu{
+    display: grid;
+    width: 200px;
+    text-align: center;
+    margin: 5px;
+  }
+    .card__submenu img{
+      border-radius: 50%;
+      margin: auto;
+      padding: 10px;
+    }
+  
+    .card__submenu h3 a{
+      color: var(--white-text-color);
+    }
+    .card__submenu h3 a:hover{
+      color: var(--hover-text-color);
+    }
+  
+    .item__submenu{
+      padding: 10px 0;
+    }
+    .item__submenu i{
+      padding: 0 10px;
+      color: var(--white-text-color);
+    }
+    .item__submenu i:hover{
+      color: var(--hover-text-color);
+    }
+    .show__team{
+      transform: translateY(0px);
+    }

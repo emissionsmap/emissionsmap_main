@@ -1,0 +1,91 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-size: 16px;
+    list-style: none;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --default-bg-color: #000508;
+    --white-text-color:aliceblue;
+    --hover-text-color:#ABDE3B;
+    --text-secondary-color:rgba(204, 180, 180, 0.911);
+}
+
+/* --------------------- header ---------------------------- */
+header {
+    z-index: 100;
+    position: fixed;
+    height: 8vh;
+    width: 100vw;
+    background: var(--default-bg-color);
+    background: -webkit-linear-gradient(to top, #07374D, #000508);
+    background: linear-gradient(to top, #07374D, #000508);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.title img{
+    height: 30px;
+}
+
+nav {
+    width: 80%;
+    text-align: center;
+  }
+
+  nav ul{
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  nav ul li a {
+    color: var(--white-text-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    grid-template-columns: 50% 50%;
+
+  }
+  nav ul li a,
+  nav ul li a:after,
+  nav ul li a:before {
+    transition: all .5s;
+  }
+  nav ul li a:hover {
+    color: var(--hover-text-color);
+  }
+  
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: var(--hover-text-color);
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}

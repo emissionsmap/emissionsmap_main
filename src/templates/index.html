@@ -1,79 +1,81 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  {% include 'css.html' %}
-</head>
-
-<body>
-  <header>    
-    <div class="title">
-      <img src="{% static 'img/logo_imagen.png' %}" alt="">
-      <img src="{% static 'img/logo_letra.png' %}" alt="">
+{% extends 'partials/base.html' %} {% load static %} {% block contentplotly %}
+<div id="click__right__close">
+  <a href="#"
+    ><i
+      class="fa-solid fa-angles-right fa-2x"
+      style="color: aliceblue; margin-left: 10px"
+    ></i
+  ></a>
+</div>
+<div class="container__aside">
+  <div style="margin: 50px 50px 0 20px">
+    <h1>Comparativa Global:</h1>
+    <p>Visualización de estadísticas globales</p>
+    <div class="kpi">
+      <ul>
+        <li class="title__kpi">Emisiones globales Co2</li>
+        <li class="number__kpi">34.6</li>
+        <li>-2</li>
+      </ul>
+      <ul>
+        <li class="title__kpi">Huella ecológica global</li>
+        <li class="number__kpi">2.73</li>
+        <li>+0.03</li>
+      </ul>
+      <ul>
+        <li class="title__kpi">Biocapacidad global</li>
+        <li class="number__kpi">1.52</li>
+        <li>+0.01</li>
+      </ul>
     </div>
-    <div class="header__main">
-      <p >Team</p>
-      <p >Open Source</p>
-    </div>
-  </header>
+    <hr class="linehr" />
+    <hr />
+    <!-- <h2 class="loading">Esperando respuesta de la API...</h2> -->
 
-  <main>
-    <div class="main__container" >
-      <div id="map"></div>
-    </div>
-    <div id="click__right__open">WORLD</div>
-    <div class="aside__right">
-      <div id="click__right__close">
-        <button>cerrar</button>
+    <section class="container__aside__chart">
+      <div class="container__chart">
+        <figure class="chart">
+          <h3>Emisiones por continente</h3>
+          <canvas id="chart1"></canvas>
+        </figure>
+        <figure class="chart">
+          <h3>Top 10 países con más emisiones co2</h3>
+          <canvas id="chart2"></canvas>
+        </figure>
       </div>
-      <div class="aside__right__main">
-        <div class="header__aside__movil">
-          <div class="title">
-            <img src="{% static 'img/logo_imagen.png' %}" alt="">
-            <img src="{% static 'img/logo_letra.png' %}" alt="">
-          </div>
-          <div class="header__main">
-            <p >Team</p>
-            <p >Open Source</p>
-          </div>
-        </div>
-        <div>
-            {% block contentplotly %}{% endblock contentplotly %}
-        </div>
-      </div>
-    </div>
-      
-    <div class="aside">
-      <div id="click__left__open">FILTERS</div>
-    </div>
-      
-    <div class="aside__left">
-      <div id="click__left__close">
-        <button>cerrar</button>
-      </div>
-      <div>
-        <div class="aright2">
-          <select name="select-age" id="select-age">
-            <option value="-1">Año</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-          </select>
-        </div>
-        <div>
-          {% block contentfilters %}{% endblock contentfilters %}
-        </div>
-      </div>
-    </div>
-  </main>
+    </section>
 
+    <section class="carrousel">
+      <div class="bodycarrousel">
+        <figure>
+          <h3>Co2 vs Temperatura</h3>
+          <canvas id="chart3"></canvas>
+        </figure>
+        <figure>
+          <h3>Huella ecológica vs Biocapacidad Percápita</h3>
+          <canvas id="chart4"></canvas>
+        </figure>
+      </div>
+      <ul class="points">
+        <li class="punto activo"></li>
+        <li class="punto"></li>
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock contentplotly %} {% block contentfilters %}
+<div id="click__left__close">
+  <button>cerrar</button>
+</div>
+<div>
+  <div class="aright2">
+    <select name="select-age" id="select-age">
+      <option value="-1">Año</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+    </select>
+  </div>
 
-  {% include 'js.html' %}
-</body>
-</html>
+{% endblock contentfilters %}
+</div>

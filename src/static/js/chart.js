@@ -29,6 +29,8 @@ function printCharts() {
     barChart( 'chart2')
     line1Chart( 'chart3')
     line2Chart('chart4')
+    countryBarsChart('chart5')
+    countryRadarChart('chart6')
 
 }
 
@@ -192,5 +194,69 @@ function line2Chart(id) {
     }
 
     new Chart(id, { type: 'line', data, options })
+
+}
+
+// country chart
+function countryRadarChart(id) {
+
+    const data = {
+        labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
+        datasets: [
+            {
+                label: 'Cantidad de emision',
+                data: [25,26,17,6,16,3,6,9],
+                borderColor: styles.color.solids[0],
+                backgroundColor: styles.color.alphas[0]
+            },
+        ]
+    }
+    const options = {
+        legend: {
+            display:false
+        },
+        tooltips: {
+            titleFontSize:1,
+            bodyFontSize: 20,
+          }
+    }
+
+    new Chart(id, { type: 'radar', data, options })
+}
+
+
+
+function countryBarsChart(id) {
+
+    const data = {
+        labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
+        datasets: [{
+            label: 'Cantidad de emision',
+            data: [25,26,17,6,16,3,6,9],
+            backgroundColor: styles.color.alphas,
+            borderColor: styles.color.solids,
+        }]
+    }
+    const options = {
+        legend: {
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                gridLines: {
+                    display: false
+                },
+                ticks: {
+                    display: true
+                }
+            }]
+        },
+        tooltips: {
+            titleFontSize:15,
+            bodyFontSize: 20,
+          }
+    }
+
+    new Chart(id, { type: 'horizontalBar', data, options })
 
 }

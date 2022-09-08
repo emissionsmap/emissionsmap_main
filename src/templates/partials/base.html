@@ -30,9 +30,14 @@
       <div id="map"></div>
     </div>
     <div id="click__right__open">WORLD</div>
+    <div class="right__country" >
+      <div class="aside__right__main">
+        {% block contentcountry %}{% endblock contentcountry%}
+      </div>
+    </div>
     <div class="aside__right">
       <div class="aside__right__main">
-        <div class="header__aside__movil">
+        <!-- <div class="header__aside__movil">
           <div class="title">
             <img src="static/img/logo_imagen.png" alt="">
             <img src="static/img/logo_letra.png" alt="">
@@ -41,16 +46,16 @@
             <p >Team</p>
             <p >Open Source</p>
           </div>
-        </div>
-            {% block contentplotly %}{% endblock contentplotly %}
+        </div> -->
+            {% block contentworld %}{% endblock contentworld %}
       </div>
     </div>
-      
+    
     <div class="aside">
       <div id="click__left__open" class="click__left__open">FILTERS</div>
     </div>
       
-    <div class="aside__left">
+      <div class="aside__left">
       
           {% block contentfilters %}{% endblock contentfilters %}
       </div>

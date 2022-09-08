@@ -78,14 +78,13 @@ L.control.layers(
 	collapsed: true
 }).addTo(map);
 
-
 // geoJson
 L.geoJSON(worldData, {
         style: style
     })
     .bindPopup((layer) => {
         if(layer.feature.properties.NAME){
-            aside__right.classList.add('move__right')
+            right__country.classList.add('move__country')
             }
         console.log(layer.feature.properties.NAME)
         return layer.feature.properties.NAME

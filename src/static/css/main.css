@@ -24,7 +24,7 @@
     background-color: var(--default-bg-color);
 }
 
-
+#country__close,
 #click__right__close{
   height:100%;
   align-self:center; 
@@ -38,6 +38,7 @@
     height: 50px;
 }
 
+.right__country,
 .aside__right,
 .aside__left {
     position: fixed;
@@ -75,17 +76,26 @@
 }
 
 .move__right {
-    transform: translate(22vw, -84vh);
+    transform: translate(21vw, -84vh);
+}
+ 
+.right__country{ 
+  width: 50vw;
+  transform: translate(100vw, -84vh);
 }
 
+.move__country {
+  transform: translate(51vw, -84vh);
+} 
+
+
 .aside__right__main{
-    width: 100%;
+    width: 100% !important;
     display: flex;
     background: var(--default-bg-color);
     background: -webkit-linear-gradient(to top,#000508, #07374D, #000508);
     background: linear-gradient(to top,#000508, #07374D, #000508);
 }
-
 
 .aside__left {
     background-color: var(--default-bg-color);

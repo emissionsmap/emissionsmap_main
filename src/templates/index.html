@@ -94,23 +94,29 @@
     <hr />
     <!-- <h2 class="loading">Esperando respuesta de la API...</h2> -->
 
+  
     <section class="container__aside__chart">
-      <div class="container__chart">
-        <figure class="chart">
-          <h3>Emisiones por continente</h3>
-          <canvas id="chart1"></canvas>
-        </figure>
-        <figure class="chart">
-          <h3>Top 10 países con más emisiones co2</h3>
-          <canvas id="chart2"></canvas>
-        </figure>
-      </div>
+      <figure>
+        <h3>Predicción al 2029</h3>
+        {{linealPlot | safe}}
+      </figure>
     </section>
+    <section class="container__aside__chart">
+      <figure>
+        {{emisionPlot | safe}}
+      </figure>
+    </section>
+    <section class="container__aside__chart">
+      <figure>
+        {{barPlot | safe}}
+      </figure>
+    </section>
+  
 
     <section class="carrousel">
       <div class="bodycarrousel">
         <figure>
-          <h3>Co2 vs Temperatura</h3>
+          <h3>Variación de la Temperatura</h3>
           <canvas id="chart3"></canvas>
         </figure>
         <figure>

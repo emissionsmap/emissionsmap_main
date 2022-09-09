@@ -16,24 +16,50 @@ Chart.defaults.global.elements.rectangle.borderWidth = 1
 Chart.defaults.scale.gridLines.color = '#444'
 Chart.defaults.scale.ticks.display = false
 
+fetch('http://127.0.0.1:8000/api/historico_huella_mundial/')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('biocapacidad').innerHTML = data.filter(m => m.anio === 2022).map(m => m.biocapacidad_percap)
+        document.getElementById('huella').innerHTML = data.filter(m => m.anio === 2022).map(m => m.huella_ecologica_percap)
+        document.getElementById('tierra').innerHTML = data.filter(m => m.anio === 2022).map(m => m.tierra)
+    } )
 
-// fetch('https://api.com/')
-//     .then(response => response.json())
-//     .then(data => printCharts(data))
+fetch('http://127.0.0.1:8000/api/huella_actual_por_pais/')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('pais_titulo').innerHTML = data.filter(m => m.codigo === "ARG").map(m => m.pais)
+        document.getElementById('huellac_pais').innerHTML = data.filter(m => m.codigo === "ARG").map(m => m.huella_carbono)
+        document.getElementById('huellae_pais').innerHTML = data.filter(m => m.codigo === "ARG").map(m => m.huella_ecologica)
+        document.getElementById('bio_pais').innerHTML = data.filter(m => m.codigo === "ARG").map(m => m.biocapacidad)
+        document.getElementById('tierra_pais').innerHTML = data.filter(m => m.codigo === "ARG").map(m => m.tierra)
+    } )
+   
 
-printCharts()
-function printCharts() {
-
-    // document.body.classList.add('running')
-    radialChart( 'chart1')
-    barChart( 'chart2')
-    line1Chart( 'chart3')
-    line2Chart('chart4')
-    countryBarsChart('chart5')
-    countryRadarChart('chart6')
-
+const fetchCoastersData = (...urls) => {
+    const promises = urls.map(url => fetch(url).then(response => response.json()))
+    return Promise.all(promises)
 }
 
+fetchCoastersData('http://127.0.0.1:8000/api/temperatura/',
+            'http://127.0.0.1:8000/api/electricidad_por_fuente/',
+            'http://127.0.0.1:8000/api/fosil_renovable_nuclear/',
+            'http://127.0.0.1:8000/api/historico_huella_mundial/',
+            'http://127.0.0.1:8000/api/energia_co2/',)
+.then(([temperatura,fuentes,fosil,huella,emision]) => {
+    printCharts(temperatura,fuentes,fosil,huella,emision)
+})
+
+function printCharts(temperatura,fuentes,fosil,huella,emision) {
+
+    // document.body.classList.add('running')
+    radialChart('chart1')
+    barChart( emision,'chart2')
+    line1Chart(temperatura,'chart3')
+    line2Chart(huella,'chart4')
+    countryBarsChart(fuentes,'chart5')
+    countryRadarChart(fosil,'chart6')
+    // modelouno(temperatura)
+}
 
 function radialChart(id) {
 
@@ -70,8 +96,7 @@ function radialChart(id) {
     new Chart(id, { type: 'polarArea', data, options })
 }
 
-function barChart(id) {
-
+function barChart(emision, id) {
 
     const data = {
         labels: ['United States','China','Russia','Japan','India','Germany','Canada','Korea','Italy','Mexico'],
@@ -107,22 +132,15 @@ function barChart(id) {
 }
 
 
-function line1Chart(id) {
-
-
+function line1Chart(temperatura,id) {
     const data = {
-        labels: ['1995-1997', '1998-2000', '2001-2003', '2004-2006', '2007-2009', '2013-2015', '2016-2018', '2019-2021'],
+        labels: temperatura.map(m => m.anio),
         datasets: [
-            {
-                label: 'Variación de co2',
-                borderColor: styles.color.solids[5],
-                data: [42,39,25,20,15,9,6,4,4]
-            },
             {
                 label: 'Variación de temperatura',
                 borderColor: styles.color.solids[3],
-                backgroundColor: styles.color.solids[3],
-                data: [23,18,21,20,7,4,2,1,1]
+                // backgroundColor: styles.color.solids[3],
+                data: temperatura.map(m => m.temperatura_media),
             }
         ]
     }
@@ -153,20 +171,19 @@ function line1Chart(id) {
 
 }
 
-function line2Chart(id) {
-
+function line2Chart(huella, id) {
     const data = {
-        labels: ['1995-1997', '1998-2000', '2001-2003', '2004-2006', '2007-2009', '2013-2015', '2016-2018', '2019-2021'],
+        labels: huella.map(m => m.anio),
         datasets: [
             {
-                label: 'Variación de co2',
+                label: 'Biocapacidad PerCápita',
                 borderColor: styles.color.solids[5],
-                data: [13,18,13,10,9,9,8,12,6]
+                data: huella.map(m => m.biocapacidad_percap),
             },
             {
-                label: 'Variación de temperatura',
+                label: 'Huella Ecológica PerCápíta',
                 borderColor: styles.color.solids[4],
-                data: [3,8,13,10,12,15,18,19,19]
+                data:huella.map(m => m.huella_ecologica_percap),
             }
         ]
     }
@@ -198,14 +215,18 @@ function line2Chart(id) {
 }
 
 // country chart
-function countryRadarChart(id) {
-
+function countryRadarChart(fosil,id) {
+    
     const data = {
-        labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
+        labels: ['Combustibles Fósiles','Energias Renovables','Energia Nuclear'],
         datasets: [
             {
-                label: 'Cantidad de emision',
-                data: [25,26,17,6,16,3,6,9],
+                label: 'Electricidad Producción fuente',
+                data: [
+                    fosil.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.combustibles_fosiles)[0],
+                    fosil.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.renovables)[0],
+                    fosil.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.nucelar)[0],
+                ],
                 borderColor: styles.color.solids[0],
                 backgroundColor: styles.color.alphas[0]
             },
@@ -226,13 +247,22 @@ function countryRadarChart(id) {
 
 
 
-function countryBarsChart(id) {
-
+function countryBarsChart(fuentes,id) {
+    console.log(fuentes.filter(m => m.codigo === "AGO" && m.anio === 2020).map(m => m['petroleo','carbon']))
     const data = {
         labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
         datasets: [{
             label: 'Cantidad de emision',
-            data: [25,26,17,6,16,3,6,9],
+            data: [
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.petroleo)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.carbon)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.gas)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.nuclear)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.hidro)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.solar)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.viento)[0],
+                fuentes.filter(m => m.codigo === "ARG" && m.anio === 2020).map(m => m.otras_renovables)[0]
+            ],
             backgroundColor: styles.color.alphas,
             borderColor: styles.color.solids,
         }]
@@ -260,3 +290,5 @@ function countryBarsChart(id) {
     new Chart(id, { type: 'horizontalBar', data, options })
 
 }
+
+printCharts()

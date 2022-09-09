@@ -16,21 +16,25 @@
 
 <div class="container__aside__country">
   <div style="margin: 50px 50px 0 20px">
-    <h1>Canadá:</h1>
+    <h1 id="pais_titulo"></h1>
     <p>Visualización de estadísticas por país</p>
     
     <div class="kpi">
       <ul>
-        <li class="title__kpi">Intensidad de Carbono</li>
-        <li class="number__kpi">244 gr</li>
+        <li class="title__kpi">Huella de Carbono</li>
+        <li class="number__kpi" id="huellac_pais"></li>
       </ul>
       <ul>
         <li class="title__kpi">Huella ecológica</li>
-        <li class="number__kpi">2.73</li>
+        <li class="number__kpi" id="huellae_pais"></li>
+      </ul>
+      <ul>
+        <li class="title__kpi">Biocapacidad</li>
+        <li class="number__kpi" id="bio_pais"></li>
       </ul>
       <ul>
         <li class="title__kpi">Tierra</li>
-        <li class="number__kpi">1.52</li>
+        <li class="number__kpi" id="tierra_pais"></li>
       </ul>
     </div>
 
@@ -74,19 +78,16 @@
     <p>Visualización de estadísticas globales</p>
     <div class="kpi">
       <ul>
-        <li class="title__kpi">Emisiones globales Co2</li>
-        <li class="number__kpi">34.6</li>
-        <li>-2</li>
+        <li class="title__kpi">Biocapacidad Percápita</li>
+        <li class="number__kpi" id="biocapacidad"></li>
       </ul>
       <ul>
         <li class="title__kpi">Huella ecológica global</li>
-        <li class="number__kpi">2.73</li>
-        <li>+0.03</li>
+        <li class="number__kpi" id="huella"></li>
       </ul>
       <ul>
-        <li class="title__kpi">Biocapacidad global</li>
-        <li class="number__kpi">1.52</li>
-        <li>+0.01</li>
+        <li class="title__kpi">Tierra</li>
+        <li class="number__kpi" id="tierra"></li>
       </ul>
     </div>
     <hr class="linehr" />
@@ -113,7 +114,7 @@
           <canvas id="chart3"></canvas>
         </figure>
         <figure>
-          <h3>Huella ecológica vs Biocapacidad Percápita</h3>
+          <h3>Huella ecológica vs Biocapacidad</h3>
           <canvas id="chart4"></canvas>
         </figure>
       </div>

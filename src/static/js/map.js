@@ -1,13 +1,13 @@
 // style choropleth map color
 function getColor(d) {
-    return d > 100 ? "#FF0000" :
-           d > 50  ? "#FF0000" :
-           d > 20  ? "#FF0000" :
-           d > 10  ? "#FF0000" :
-           d > 5   ? "#036AAB" :
-           d > 2   ? "#097BBD" :
-           d > 1   ? "#03AEEF" :
-                      '#74bfea';
+    return d > 100 ? "#0D47A1" :
+           d > 50  ? "#1976D2" :
+           d > 20  ? "#1E88E5" :
+           d > 10  ? "#2196F3" :
+           d > 5   ? "#42A5F5" :
+           d > 2   ? "#64B5F6" :
+           d > 1   ? "#90CAF9" :
+                      '#7BBDEFB';
 }
 
 function style(feature) {

@@ -1,4 +1,4 @@
-pais,continente,codigo,anio,carbon,a partir gas,hidro,otras renovables incluida la bioenergia,solar,petroleo,viento,origen nuclear,Idpais,Idcontinente,Id_anio
+pais,continente,codigo,anio,carbon,gas,hidro,otras_renovables_incluida_la _bioenergia,solar,petroleo,viento,nuclear,Idpais,Idcontinente,Id_anio
 Afghanistan,Asia,AFG,2000,0.0,0.0,0.3100000023841858,0.0,0.0,0.1599999964237213,0.0,0.0,6e9767f4f15357401b148b9a8ced14ef,154a67340e8c14dd5253dc4ff6120197,08f90c1a417155361a5c4b8d297e0d78
 Afghanistan,Asia,AFG,2001,0.0,0.0,0.5,0.0,0.0,0.0900000035762786,0.0,0.0,6e9767f4f15357401b148b9a8ced14ef,154a67340e8c14dd5253dc4ff6120197,d0fb963ff976f9c37fc81fe03c21ea7b
 Afghanistan,Asia,AFG,2002,0.0,0.0,0.5600000023841858,0.0,0.0,0.1299999952316284,0.0,0.0,6e9767f4f15357401b148b9a8ced14ef,154a67340e8c14dd5253dc4ff6120197,4ba29b9f9e5732ed33761840f4ba6c53

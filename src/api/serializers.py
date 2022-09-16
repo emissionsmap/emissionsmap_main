@@ -1,55 +1,49 @@
 from rest_framework import serializers
-from api.models import ElectricidadProdFuenteApilada
-from api.models import Energiaco2
+from api.models import ConsumoEnergiaPais
+from api.models import DatosExtrasEnergiaPais
 from api.models import Gases
-from api.models import HistoricEmissions
-from api.models import HuellaBiocapacidad
-from api.models import HuellaSosteniblePorPais
-from api.models import SubEnergiaFosilRenovablesNuclear
-from api.models import TemperaturaAnomalia
+from api.models import HistoricoGhg
+from api.models import HuellaMundial
+from api.models import HuellaPais
+from api.models import ProduccionEnergiaPais
+from api.models import TemperaturaMundial
 
-
-class ElectricidadProdFuenteApiladaSerializer(serializers.ModelSerializer):
+class ConsumoEnergiaPaisSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ElectricidadProdFuenteApilada
-        fields = ('codigo','pais','continente','anio','petroleo','carbon','gas','hidro',
-                    'solar','viento','nuclear','otras_renovables')
+        model = ConsumoEnergiaPais
+        fields = '__all__'
 
-class Energiaco2Serializer(serializers.ModelSerializer):
+class DatosExtrasEnergiaPaisSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Energiaco2
-        fields = ('codigo','pais','continente','anio','combustible',
-                    'pib','intensidad_energetica_percap','emision_co2',
-                    'consumo_energia_twh','produccion_energia_twh','intensidad_energetica_percap_twh')
+        model = DatosExtrasEnergiaPais
+        fields = '__all__'
 
 class GasesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gases
-        fields  = ('anio','oxido_nitroso','hexafloruro_azufre','dioxido_carbono','metano')
-
-class HistoricEmissionsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HistoricEmissions
         fields = '__all__'
 
-class HuellaBiocapacidadSerializer(serializers.ModelSerializer):
+class HistoricoGhgSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HuellaBiocapacidad
-        fields = ('anio','poblacion','biocapacidad_percap','huella_ecologica_percap','tierra')
+        model = HistoricoGhg
+        fields = '__all__'
 
-class HuellaSosteniblePorPaisSerializer(serializers.ModelSerializer):
+class HuellaMundialSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HuellaSosteniblePorPais
-        fields = ('codigo','pais','continente','desarrollo_sostenible','expectativa_vida',
-                'indice_desarrollo_humano','pib_percap','grupo_ingresos','poblacion','huella_carbono',
-                'huella_ecologica','biocapacidad','tierra')
+        model = HuellaMundial
+        fields = '__all__'
 
-class SubEnergiaFosilRenovablesNuclearSerializer(serializers.ModelSerializer):
+class HuellaPaisSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SubEnergiaFosilRenovablesNuclear
-        fields = ('codigo','pais','continente','anio','combustibles_fosiles','renovables','nuclear')
+        model = HuellaPais
+        fields = '__all__'
 
-class TemperaturaAnomaliaSerializer(serializers.ModelSerializer):
+class ProduccionEnergiaPaisSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TemperaturaAnomalia
-        fields = ('anio','temperatura_media','limite_inferior','limite_superior')
+        model = ProduccionEnergiaPais
+        fields = '__all__'
+
+class TemperaturaMundialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TemperaturaMundial
+        fields = '__all__'

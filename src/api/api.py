@@ -1,32 +1,33 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serializers import ElectricidadProdFuenteApiladaSerializer
-from api.serializers import Energiaco2Serializer
+from api.serializers import ConsumoEnergiaPaisSerializer
+from api.serializers import DatosExtrasEnergiaPaisSerializer
 from api.serializers import GasesSerializer
-from api.serializers import HistoricEmissionsSerializer
-from api.serializers import HuellaBiocapacidadSerializer
-from api.serializers import HuellaSosteniblePorPaisSerializer
-from api.serializers import SubEnergiaFosilRenovablesNuclearSerializer
-from api.serializers import TemperaturaAnomaliaSerializer
-from api.models import ElectricidadProdFuenteApilada
-from api.models import Energiaco2
+from api.serializers import HistoricoGhgSerializer
+from api.serializers import HuellaMundialSerializer
+from api.serializers import HuellaPaisSerializer
+from api.serializers import ProduccionEnergiaPaisSerializer
+from api.serializers import TemperaturaMundialSerializer
+from api.models import ConsumoEnergiaPais
+from api.models import DatosExtrasEnergiaPais
 from api.models import Gases
-from api.models import HistoricEmissions
-from api.models import HuellaBiocapacidad
-from api.models import HuellaSosteniblePorPais
-from api.models import SubEnergiaFosilRenovablesNuclear
-from api.models import TemperaturaAnomalia
+from api.models import HistoricoGhg
+from api.models import HuellaMundial
+from api.models import HuellaPais
+from api.models import ProduccionEnergiaPais
+from api.models import TemperaturaMundial
 
-class ElectricidadProdFuenteApiladaApiView(APIView):
+
+class ConsumoEnergiaPaisApiView(APIView):
     def get(self,request):
-        obj = ElectricidadProdFuenteApilada.objects.all()
-        ser = ElectricidadProdFuenteApiladaSerializer(obj, many=True)
+        obj = ConsumoEnergiaPais.objects.all()
+        ser = ConsumoEnergiaPaisSerializer(obj, many=True)
         return Response(ser.data)
 
-class Energiaco2ApiView(APIView):
+class DatosExtrasEnergiaPaisApiView(APIView):
     def get(self,request):
-        obj = Energiaco2.objects.all()
-        ser = Energiaco2Serializer(obj, many=True)
+        obj = DatosExtrasEnergiaPais.objects.all()
+        ser = DatosExtrasEnergiaPaisSerializer(obj, many=True)
         return Response(ser.data)
    
 class GasesApiView(APIView):
@@ -35,32 +36,32 @@ class GasesApiView(APIView):
         ser = GasesSerializer(obj, many=True)
         return Response(ser.data)
 
-class HistoricEmissionsApiView(APIView):
+class HistoricoGhgApiView(APIView):
     def get(self,request):
-        obj = HistoricEmissions.objects.all()
-        ser = HistoricEmissionsSerializer(obj, many=True)
+        obj = HistoricoGhg.objects.all()
+        ser = HistoricoGhgSerializer(obj, many=True)
         return Response(ser.data)
 
-class HuellaBiocapacidadApiView(APIView):
+class HuellaMundialApiView(APIView):
     def get(self,request):
-        obj = HuellaBiocapacidad.objects.all()
-        ser = HuellaBiocapacidadSerializer(obj, many=True)
+        obj = HuellaMundial.objects.all()
+        ser = HuellaMundialSerializer(obj, many=True)
 
         return Response(ser.data)
-class HuellaSosteniblePorPaisApiView(APIView):
+class HuellaPaisApiView(APIView):
     def get(self,request):
-        obj = HuellaSosteniblePorPais.objects.all()
-        ser = HuellaSosteniblePorPaisSerializer(obj, many=True)
+        obj = HuellaPais.objects.all()
+        ser = HuellaPaisSerializer(obj, many=True)
         return Response(ser.data)
 
-class SubEnergiaFosilRenovablesNuclearApiView(APIView):
+class ProduccionEnergiaPaisApiView(APIView):
     def get(self,request):
-        obj = SubEnergiaFosilRenovablesNuclear.objects.all()
-        ser = SubEnergiaFosilRenovablesNuclearSerializer(obj, many=True)
+        obj = ProduccionEnergiaPais.objects.all()
+        ser = ProduccionEnergiaPaisSerializer(obj, many=True)
         return Response(ser.data)
 
-class TemperaturaAnomaliaApiView(APIView):
+class TemperaturaMundialApiView(APIView):
     def get(self,request):
-        obj = TemperaturaAnomalia.objects.all()
-        ser = TemperaturaAnomaliaSerializer(obj, many=True)
+        obj = TemperaturaMundial.objects.all()
+        ser = TemperaturaMundialSerializer(obj, many=True)
         return Response(ser.data)

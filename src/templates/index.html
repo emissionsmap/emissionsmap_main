@@ -1,8 +1,5 @@
 {% extends 'partials/base.html' %} {% load static %} 
 
-
-
-
 {% block contentcountry %}
 
 <div id="country__close" style="width: 50px;">
@@ -98,17 +95,17 @@
     <section class="container__aside__chart">
       <figure>
         <h3>Predicción al 2029</h3>
-        {{linealPlot | safe}}
+
       </figure>
     </section>
     <section class="container__aside__chart">
       <figure>
-        {{emisionPlot | safe}}
+
       </figure>
     </section>
     <section class="container__aside__chart">
       <figure>
-        {{barPlot | safe}}
+
       </figure>
     </section>
   
@@ -136,14 +133,8 @@
   <button>cerrar</button>
 </div>
 <div>
-  <div class="aright2">
-    <select name="select-age" id="select-age">
-      <option value="-1">Año</option>
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-    </select>
-  </div>
+  <input type="text" onchange="cambio(this.value)">
+  <input type="button" value="Button">
 
 {% endblock contentfilters %}
 </div>

@@ -10,38 +10,25 @@ function getColor(d) {
                       '#7BBDEFB';
 }
 
-function style(feature) {
-    return {
-        fillColor: getColor(feature.properties[2015]),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
-
-
+    
 // get leaflet and configuration
-var map = L.map('map',{ zoomControl: false }).setView([51.505, -0.09], 3);
+var mapamundi = L.map('map',{ zoomControl: false }).setView([51.505, -0.09], 3);
 
 var southWest = L.latLng(-50.98155760646617, -180),
 northEast = L.latLng(82.99346179538875, 180);
 var bounds = L.latLngBounds(southWest, northEast);
 
-map.setMaxBounds(bounds);
-map.on('drag', function() {
-    map.panInsideBounds(bounds, { animate: false });
+mapamundi.setMaxBounds(bounds);
+mapamundi.on('drag', function() {
+    mapamundi.panInsideBounds(bounds, { animate: false });
 });
-
-
 
 // // base and control layers
 var osmBase = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 8,
+    maxZoom: 10,
     minZoom:2,
-    attribution: '© OpenStreetMap ....................'
-}).addTo(map);
+    attribution: '© OpenStreetMap |'
+}).addTo(mapamundi);
 
 googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
     maxZoom: 10,
@@ -56,8 +43,6 @@ googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
     subdomains:['mt0','mt1','mt2','mt3'],
     attribution: '© Google |'
 });
-// var punto = L.marker([37.88437176085360, -4.779524803161621]).bindPopup('Soy un puntazo');
-// punto.addTo(map);
 
 var baseMaps = {
     "base":osmBase, 
@@ -66,35 +51,69 @@ var baseMaps = {
 
 };
 
-var overlayMaps = {
-    // "Puntazo": punto
-};
-
 L.control.layers(
     baseMaps, 
-    overlayMaps,
+    overlayMaps = {},
     {
 	position: 'topright',
 	collapsed: true
-}).addTo(map);
+}).addTo(mapamundi);
 
-// geoJson
-L.geoJSON(worldData, {
-        style: style
-    })
-    .bindPopup((layer) => {
+
+// Shown popup with info
+let popup  = (feature, layer) => {
+    layer.bindPopup((layer) => {
         if(layer.feature.properties.NAME){
             right__country.classList.add('move__country')
             }
-        console.log(layer.feature.properties.NAME)
-        return layer.feature.properties.NAME
+        return `<div>
+                <p style="text-align:right; font-style: italic;">
+                    ${feature.properties.ISO_A3}
+                </p>
+                <h3>${feature.properties.NAME}</h3>
+                </div>`
     })
-    .addTo(map);
+};
 
+// *********************************************************************************
+fetch('http://127.0.0.1:8000/api/geojson/')
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data.features.map(m => m.properties).filter(m => m.NAME == "Afghanistan").map(m => m.NAME)[0])
+        layer.addData(data);
+    } )
+
+// let consumo_por_fuente = fetch('http://127.0.0.1:8000/api/consumo_por_fuente/')
+//     .then(res => res.json())
+//     .then( data => {
+//     })
+
+let consumo_por_fuente = consumo_api
+function style(feature) {
+    let data;
+    consumo_por_fuente.forEach( e => {
+            if(feature.properties.ISO_A3 === e.iso_code && e.year === 2000){
+                data = e.carbon
+            }
+        })   
+    return {fillColor: getColor(data)};             
+        
+}
+let layer =  L.geoJson(null, {
+            onEachFeature: popup,
+            style: style,
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+        });
+layer.addTo(mapamundi);
+
+// *********************************************************************************
 
 //legend
 var legend = L.control({position: 'bottomleft'});
-
 legend.onAdd = function () {
 
     var div = L.DomUtil.create('div', 'info legend'),
@@ -107,4 +126,4 @@ legend.onAdd = function () {
     }
     return div;
 };
-legend.addTo(map);
+legend.addTo(mapamundi);

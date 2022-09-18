@@ -30,7 +30,7 @@ class DatosExtrasEnergiaPais(models.Model):
 
 
 class Gases(models.Model):
-    anio = models.BigIntegerField(primary_key=True)
+    year = models.BigIntegerField(primary_key=True)
     n2o = models.FloatField(db_column='N2O', blank=True, null=True)
     sf6 = models.FloatField(db_column='SF6', blank=True, null=True)
     co2 = models.FloatField(db_column='CO2', blank=True, null=True)
@@ -42,8 +42,8 @@ class Gases(models.Model):
 
 
 class HistoricoGhg(models.Model):
-    pais = models.TextField(blank=True, null=True)
-    codigo = models.TextField(primary_key=True)
+    country = models.TextField(blank=True, null=True)
+    code = models.TextField(primary_key=True)
     continente = models.TextField(blank=True, null=True)
     number_2019 = models.FloatField(db_column='2019', blank=True, null=True)
     number_2018 = models.FloatField(db_column='2018', blank=True, null=True)
@@ -82,8 +82,8 @@ class HistoricoGhg(models.Model):
 
 
 class HuellaMundial(models.Model):
-    anio = models.BigIntegerField(primary_key=True)
-    poblacion = models.BigIntegerField(blank=True, null=True)
+    year = models.BigIntegerField(primary_key=True)
+    poblation = models.BigIntegerField(blank=True, null=True)
     biocapacidad_percap = models.FloatField(db_column='biocapacidad percap', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     huella_ecologica_percap = models.FloatField(db_column='huella ecologica percap', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     tierra = models.FloatField(blank=True, null=True)
@@ -94,8 +94,8 @@ class HuellaMundial(models.Model):
 
 
 class HuellaPais(models.Model):
-    pais = models.TextField(blank=True, null=True)
-    codigo = models.TextField(primary_key=True)
+    country = models.TextField(blank=True, null=True)
+    code = models.TextField(primary_key=True)
     continente = models.TextField(blank=True, null=True)
     ids = models.FloatField(db_column='IDS', blank=True, null=True)  # Field name made lowercase.
     ele = models.FloatField(db_column='ELE', blank=True, null=True)  # Field name made lowercase.
@@ -139,7 +139,7 @@ class ProduccionEnergiaPais(models.Model):
 
 
 class TemperaturaMundial(models.Model):
-    anio = models.BigIntegerField(primary_key=True)
+    year = models.BigIntegerField(primary_key=True)
     mat = models.FloatField(db_column='MAT', blank=True, null=True)  # Field name made lowercase.
     limite_superior = models.FloatField(db_column='limite superior', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     limite_inferior = models.FloatField(db_column='limite inferior', blank=True, null=True)  # Field renamed to remove unsuitable characters.
@@ -147,3 +147,14 @@ class TemperaturaMundial(models.Model):
     class Meta:
         managed = False
         db_table = 'temperatura_mundial'
+
+class Predicciones(models.Model):
+    year = models.BigIntegerField(primary_key=True)
+    emision_co2 = models.FloatField(blank=True, null=True)
+    produccion_energia = models.FloatField(blank=True, null=True)
+    var_emision_co2 = models.FloatField(blank=True, null=True)
+    var_produccion_energia = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'predicciones'

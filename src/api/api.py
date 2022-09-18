@@ -8,6 +8,7 @@ from api.serializers import HuellaMundialSerializer
 from api.serializers import HuellaPaisSerializer
 from api.serializers import ProduccionEnergiaPaisSerializer
 from api.serializers import TemperaturaMundialSerializer
+from api.serializers import PrediccionesSerializer
 from api.models import ConsumoEnergiaPais
 from api.models import DatosExtrasEnergiaPais
 from api.models import Gases
@@ -16,52 +17,120 @@ from api.models import HuellaMundial
 from api.models import HuellaPais
 from api.models import ProduccionEnergiaPais
 from api.models import TemperaturaMundial
+from api.models import Predicciones
+
+from rest_framework import viewsets, generics, filters
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 
 
-class ConsumoEnergiaPaisApiView(APIView):
-    def get(self,request):
-        obj = ConsumoEnergiaPais.objects.all()
-        ser = ConsumoEnergiaPaisSerializer(obj, many=True)
-        return Response(ser.data)
+class ConsumoEnergiaPaisApiView(generics.ListAPIView):
+    serializer_class = ConsumoEnergiaPaisSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'iso_code' : ['contains'],
+        'year': ['contains']
+    }
 
-class DatosExtrasEnergiaPaisApiView(APIView):
-    def get(self,request):
-        obj = DatosExtrasEnergiaPais.objects.all()
-        ser = DatosExtrasEnergiaPaisSerializer(obj, many=True)
-        return Response(ser.data)
-   
-class GasesApiView(APIView):
-    def get(self,request):
-        obj = Gases.objects.all()
-        ser = GasesSerializer(obj, many=True)
-        return Response(ser.data)
+    def get_queryset(self):
+        queryset = ConsumoEnergiaPais.objects.all()
+        return queryset
 
-class HistoricoGhgApiView(APIView):
-    def get(self,request):
-        obj = HistoricoGhg.objects.all()
-        ser = HistoricoGhgSerializer(obj, many=True)
-        return Response(ser.data)
 
-class HuellaMundialApiView(APIView):
-    def get(self,request):
-        obj = HuellaMundial.objects.all()
-        ser = HuellaMundialSerializer(obj, many=True)
+class DatosExtrasEnergiaPaisApiView(generics.ListAPIView):
+    serializer_class = DatosExtrasEnergiaPaisSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = {
+        'iso_code' : ['contains'],
+        'year': ['contains']
+    }
 
-        return Response(ser.data)
-class HuellaPaisApiView(APIView):
-    def get(self,request):
-        obj = HuellaPais.objects.all()
-        ser = HuellaPaisSerializer(obj, many=True)
-        return Response(ser.data)
+    search_fields = ['country']
 
-class ProduccionEnergiaPaisApiView(APIView):
-    def get(self,request):
-        obj = ProduccionEnergiaPais.objects.all()
-        ser = ProduccionEnergiaPaisSerializer(obj, many=True)
-        return Response(ser.data)
+    def get_queryset(self):
+        queryset = DatosExtrasEnergiaPais.objects.all()
+        return queryset
+
+class GasesApiView(generics.ListAPIView):
+    serializer_class = GasesSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'year': ['contains']
+    }
+
+    def get_queryset(self):
+        queryset = Gases.objects.all()
+        return queryset
+
+
+class HistoricoGhgApiView(generics.ListAPIView):
+    serializer_class = HistoricoGhgSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'country': ['contains'],
+        'code': ['contains'],
+        'continente': ['contains']
+    }
+
+    def get_queryset(self):
+        queryset = HistoricoGhg.objects.all()
+        return queryset
+
+class HuellaMundialApiView(generics.ListAPIView):
+    serializer_class = HuellaMundialSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'year': ['contains'],
+    }
+
+    def get_queryset(self):
+        queryset = HuellaMundial.objects.all()
+        return queryset
+
+class HuellaPaisApiView(generics.ListAPIView):
+    serializer_class = HuellaPaisSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'country': ['contains'],
+        'code': ['contains'],
+        'continente': ['contains']
+    }
+
+    def get_queryset(self):
+        queryset = HuellaPais.objects.all()
+        return queryset
+
+class ProduccionEnergiaPaisApiView(generics.ListAPIView):
+    serializer_class = ProduccionEnergiaPaisSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'year': ['contains'],
+        'iso_code': ['contains']
+    }
+
+    def get_queryset(self):
+        queryset = ProduccionEnergiaPais.objects.all()
+        return queryset
 
 class TemperaturaMundialApiView(APIView):
-    def get(self,request):
-        obj = TemperaturaMundial.objects.all()
-        ser = TemperaturaMundialSerializer(obj, many=True)
-        return Response(ser.data)
+    serializer_class = TemperaturaMundialSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'year': ['contains'],
+        'iso_code': ['contains']
+    }
+
+    def get_queryset(self):
+        queryset = TemperaturaMundial.objects.all()
+        return queryset
+    
+class PrediccionesApiView(APIView):
+    serializer_class = PrediccionesSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'year': ['contains'],
+    }
+
+    def get_queryset(self):
+        queryset = Predicciones.objects.all()
+        return queryset

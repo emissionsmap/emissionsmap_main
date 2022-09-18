@@ -7,6 +7,7 @@ from api.models import HuellaMundial
 from api.models import HuellaPais
 from api.models import ProduccionEnergiaPais
 from api.models import TemperaturaMundial
+from api.models import Predicciones
 
 class ConsumoEnergiaPaisSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,4 +47,9 @@ class ProduccionEnergiaPaisSerializer(serializers.ModelSerializer):
 class TemperaturaMundialSerializer(serializers.ModelSerializer):
     class Meta:
         model = TemperaturaMundial
+        fields = '__all__'
+
+class PrediccionesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Predicciones
         fields = '__all__'

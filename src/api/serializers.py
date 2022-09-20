@@ -45,7 +45,7 @@ class PaisConInformacionSerializer(serializers.ModelSerializer):
 class HuellaPaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = HuellaPais
-        fields = '__all__'
+        exclude = ('idpais','idcontinente')
 
 class EmisionesPaisSerializer(serializers.ModelSerializer):
     class Meta:

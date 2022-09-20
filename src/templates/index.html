@@ -89,19 +89,27 @@
     <section class="container__aside__chart">
       <figure>
         <h3>Predicción al 2029</h3>
+        <canvas id="chart7"></canvas>
       </figure>
     </section>
-    <section class="container__aside__chart">
-      <figure class="chart">
-        <canvas id="chart2"></canvas>
-      </figure>
-    </section>
-    <section class="container__aside__chart">
-      <figure class="chart">
-        <canvas id="chart1"></canvas>
-      </figure>
-    </section>
-  
+      <section class="container__aside__chart">
+        <div class="container__chart">
+          <div class="chart"> 
+            <figure>
+              <h3>Top 10 con mas emisiones</h3>
+              <canvas id="chart2"></canvas>
+            </figure>
+          </div>
+          <div class="chart">
+            <figure>
+              <h3>Emisiones por continente</h3>
+              <canvas id="chart1"></canvas>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+
 
     <section class="carrousel">
       <div class="bodycarrousel">
@@ -129,9 +137,12 @@
 <div id="click__left__close">
   <button>cerrar</button>
 </div>
-<div>
-  <input type="text" onchange="cambio(this.value)">
-  <input type="button" value="Button">
+<div style="width: 100%;height: 500px;display: flex;">
+  <div style="margin-top:50px;margin-left: 20px;">
+    <h3>Selecciona una fecha</h3>
+    <input style="margin-top: 3px" type="text">
+    <input style="margin-top: 10px" type="button" value="Button">
+  </div>
 </div>
 
 {% endblock contentfilters %}

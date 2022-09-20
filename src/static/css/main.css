@@ -153,3 +153,12 @@
     .show__team{
       transform: translateY(0px);
     }
+
+    #obturador{
+      display: none;
+        position: absolute;
+        width: 200vw;
+        height: 200vh;
+        z-index: 1000;
+        transform: translateY(-685px);
+      }

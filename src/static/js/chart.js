@@ -16,48 +16,30 @@ Chart.defaults.global.elements.rectangle.borderWidth = 1
 Chart.defaults.scale.gridLines.color = '#444'
 Chart.defaults.scale.ticks.display = false
 
-// fetch('http://127.0.0.1:8000/api/huella_mundial')
-//     .then(response => response.json())
-//     .then(data => {
-//         document.getElementById('biocapacidad').innerHTML = data.filter(m => m.anio === 2022).map(m => m.biocapacidad_percap)
-//         document.getElementById('huella').innerHTML = data.filter(m => m.anio === 2022).map(m => m.huella_ecologica_percap)
-//         document.getElementById('tierra').innerHTML = data.filter(m => m.anio === 2022).map(m => m.tierra)
-//     } )
 
-// fetch('http://127.0.0.1:8000/api/huella_pais')
-//     .then(response => response.json())
-//     .then(data => {
-//         document.getElementById('pais_titulo').innerHTML = data.filter(m => m.codigo === "PER").map(m => m.pais)
-//         document.getElementById('huellac_pais').innerHTML = data.filter(m => m.codigo === "PER").map(m => m.huella_carbono)
-//         document.getElementById('huellae_pais').innerHTML = data.filter(m => m.codigo === "PER").map(m => m.huella_ecologica)
-//         document.getElementById('bio_pais').innerHTML = data.filter(m => m.codigo === "PER").map(m => m.biocapacidad)
-//         document.getElementById('tierra_pais').innerHTML = data.filter(m => m.codigo === "PER").map(m => m.tierra)
-//     } )
-   
+let huellam = huellamundial
+document.getElementById('biocapacidad').innerHTML = huellam.filter(m => m.anio === 2021).map(m => m.biocapacidad)
+document.getElementById('huella').innerHTML = huellam.filter(m => m.anio === 2021).map(m => m.huella_ecologica)
+document.getElementById('tierra').innerHTML = huellam.filter(m => m.anio === 2021).map(m => m.tierra)
 
-const fetchCoastersData = (...urls) => {
-    const promises = urls.map(url => fetch(url).then(response => response.json()))
-    return Promise.all(promises)
-}
+let huellap = huellapais
+document.getElementById('pais_titulo').innerHTML = huellap.filter(m => m.codigo === "PER").map(m => m.pais)
+document.getElementById('huellac_pais').innerHTML = huellap.filter(m => m.codigo === "PER").map(m => m.huella_carbono)
+document.getElementById('huellae_pais').innerHTML = huellap.filter(m => m.codigo === "PER").map(m => m.huella_ecologica)
+document.getElementById('bio_pais').innerHTML = huellap.filter(m => m.codigo === "PER").map(m => m.biocapacidad)
+document.getElementById('tierra_pais').innerHTML = huellap.filter(m => m.codigo === "PER").map(m => m.tierra)
 
-fetchCoastersData('http://127.0.0.1:8000/api/temperatura_mundial',
-            'http://127.0.0.1:8000/api/huella_mundial',
-            'http://127.0.0.1:8000/api/prediccion_mundial',
-            )
-    .then(([tempMundial,huella, predMundial]) => {
-        printCharts(tempMundial,huella,predMundial)
-    })
 
-function printCharts(tempMundial,huella,predMundial) {
-    // document.body.classList.add('running')
-    radialChart('chart1');
-    barChart('chart2');
-    line1Chart(tempMundial,'chart3');
-    line2Chart(huella,'chart4');
-    countryBarsChart('chart5');
-    countryRadarChart('chart6');
-    linePredictionChart(predMundial,'chart7');
-}
+let predMundial = prediccion
+let tempMundial = temperatura
+
+radialChart('chart1');
+barChart('chart2');
+line1Chart(tempMundial,'chart3');
+line2Chart(huellam,'chart4');
+countryBarsChart('chart5');
+countryRadarChart('chart6');
+linePredictionChart(predMundial,'chart7');
 
 function radialChart(id) {
 

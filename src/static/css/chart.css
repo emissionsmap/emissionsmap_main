@@ -42,6 +42,23 @@ canvas {
   width: 90%;
 }
 
+/* grid */
+
+[class*='cols'] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.cols-1 > * {
+  width: 100%;
+  margin: 10px;
+}
+
+.cols-2 > * {
+  width: 50%;
+  margin: 10px
+}
 
 #chart3,
 #chart4,

@@ -63,25 +63,26 @@ class ProduccionPais(models.Model):
         managed = False
         db_table = 'produccion_pais'
 
-
 class HuellaPais(models.Model):
-    id = models.CharField(primary_key=True, max_length=3)
-    pais = models.CharField(max_length=100)
-    continente = models.CharField(max_length=100)
-    IDS = models.FloatField(db_column='IDS', blank=True, null=True)
-    ELE = models.FloatField(db_column='ELE', blank=True, null=True)
-    IDH = models.FloatField(db_column='IDH', blank=True, null=True)
-    pib_percap = models.FloatField(db_column='PIB_PerCap', blank=True, null=True)
-    poblacion = models.FloatField(blank=True, null=True)
-    huella_carbono = models.FloatField(db_column='huella carbono', blank=True, null=True)
-    huella_ecologica = models.FloatField(db_column='huella ecologica', blank=True, null=True)
+    pais = models.TextField(blank=True, null=True)
+    codigo = models.CharField(primary_key=True, max_length=3)
+    continente = models.TextField(blank=True, null=True)
+    indice_objetivos_desarrollo_sostenible = models.FloatField(db_column='indice objetivos desarrollo sostenible', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    expectativa_vida = models.FloatField(db_column='expectativa vida', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    indice_desarrollo_humano = models.FloatField(db_column='indice desarrollo humano', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    pib_per_capita = models.TextField(db_column='pib per capita', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    grupo_ingresos = models.TextField(db_column='grupo ingresos', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    poblacion = models.TextField(blank=True, null=True)
+    huella_carbono = models.FloatField(db_column='huella carbono', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    huella_ecologica = models.FloatField(db_column='huella ecologica', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     biocapacidad = models.FloatField(blank=True, null=True)
     tierra = models.FloatField(blank=True, null=True)
+    idpais = models.TextField(db_column='Idpais', blank=True, null=True)  # Field name made lowercase.
+    idcontinente = models.TextField(db_column='Idcontinente', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'huella_pais'
-
 
 class EmisionesPais(models.Model):
     id = models.CharField(primary_key=True, max_length=3)

@@ -42,10 +42,10 @@ canvas {
   width: 90%;
 }
 
-#chart1,
-#chart2,
+
 #chart3,
-#chart4 {
+#chart4,
+#chart7 {
   max-height: 200px;
   min-width: 200px;
 }
@@ -54,6 +54,7 @@ canvas {
 #chart6 {
   max-height: 300px;
 }
+
 
 /* section {
     opacity: 0;
@@ -90,7 +91,7 @@ canvas {
 }
 
 .container__aside__chart .container__chart {
-  width: 100% !important;
+  width: 200%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -102,7 +103,7 @@ canvas {
 .container__aside__chart .chart {
   width: calc(100% / 2 - 2em);
   transition: all 0.4s ease;
-  min-width: 400px;
+  /* min-width: 400px; */
 }
 
 .carrousel {

@@ -9,7 +9,6 @@ function getColor(d) {
            d > 1   ? "#90CAF9" :
                       '#7BBDEFB';
 }
-
     
 // get leaflet and configuration
 var mapamundi = L.map('map',{ zoomControl: false }).setView([51.505, -0.09], 3);
@@ -76,25 +75,33 @@ let popup  = (feature, layer) => {
 };
 
 // *********************************************************************************
-fetch('http://127.0.0.1:8000/api/geojson/')
+fetch('http://127.0.0.1:8000/api/geojson')
     .then(response => response.json())
     .then(data => {
-        // console.log(data.features.map(m => m.properties).filter(m => m.NAME == "Afghanistan").map(m => m.NAME)[0])
         layer.addData(data);
     } )
 
-// let consumo_por_fuente = fetch('http://127.0.0.1:8000/api/consumo_por_fuente/')
-//     .then(res => res.json())
-//     .then( data => {
-//     })
+// function urlResponse(url){
+//     var xmlhttp = new XMLHttpRequest();
+//     xmlhttp.open("GET",url, false);
+//     xmlhttp.setRequestHeader("accept" ,"application/json");
+//     xmlhttp.setRequestHeader("content-type" ,"application/json");
+//     xmlhttp.send(url);
+//     var resultado = xmlhttp.response;
+//     return JSON.parse(resultado);
+// }
 
+// const consumo = urlResponse('http://127.0.0.1:8000/api/emisiones_pais')
+// console.log(consumo.filter(m => m.id === 'PER'))
 let consumo_por_fuente = consumo_api
 function style(feature) {
     let data;
     consumo_por_fuente.forEach( e => {
-            if(feature.properties.ISO_A3 === e.iso_code && e.year === 2000){
+        if(e.year === 2000){
+            if(feature.properties.ISO_A3 === e.iso_code){
                 data = e.carbon
             }
+        }
         })   
     return {fillColor: getColor(data)};             
         

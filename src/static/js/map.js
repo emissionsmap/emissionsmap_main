@@ -1,12 +1,12 @@
 // style choropleth map color
 function getColor(d) {
-    return d > 100 ? "#0D47A1" :
-           d > 50  ? "#1976D2" :
-           d > 20  ? "#1E88E5" :
-           d > 10  ? "#2196F3" :
-           d > 5   ? "#42A5F5" :
-           d > 2   ? "#64B5F6" :
-           d > 1   ? "#90CAF9" :
+    return d > 7000 ? "#0D47A1" :
+           d > 5000  ? "#1976D2" :
+           d > 3000  ? "#1E88E5" :
+           d > 1000  ? "#2196F3" :
+           d > 500   ? "#42A5F5" :
+           d > 200   ? "#64B5F6" :
+           d > 10   ? "#90CAF9" :
                       '#7BBDEFB';
 }
     
@@ -74,39 +74,22 @@ let popup  = (feature, layer) => {
     })
 };
 
-// *********************************************************************************
-fetch('http://127.0.0.1:8000/api/geojson')
-    .then(response => response.json())
-    .then(data => {
-        layer.addData(data);
-    } )
+let jsonmundo = mundo
 
-// function urlResponse(url){
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.open("GET",url, false);
-//     xmlhttp.setRequestHeader("accept" ,"application/json");
-//     xmlhttp.setRequestHeader("content-type" ,"application/json");
-//     xmlhttp.send(url);
-//     var resultado = xmlhttp.response;
-//     return JSON.parse(resultado);
-// }
+let emisionesmundo = emisiones
 
-// const consumo = urlResponse('http://127.0.0.1:8000/api/emisiones_pais')
-// console.log(consumo.filter(m => m.id === 'PER'))
-let consumo_por_fuente = consumo_api
+
 function style(feature) {
     let data;
-    consumo_por_fuente.forEach( e => {
-        if(e.year === 2000){
-            if(feature.properties.ISO_A3 === e.iso_code){
-                data = e.carbon
-            }
+    emisionesmundo.forEach( e => {
+        if(feature.properties.ISO_A3 === e.id){
+            data = e.n2019
         }
         })   
     return {fillColor: getColor(data)};             
         
 }
-let layer =  L.geoJson(null, {
+let layer =  L.geoJson(jsonmundo, {
             onEachFeature: popup,
             style: style,
             weight: 2,
@@ -117,14 +100,13 @@ let layer =  L.geoJson(null, {
         });
 layer.addTo(mapamundi);
 
-// *********************************************************************************
 
 //legend
 var legend = L.control({position: 'bottomleft'});
 legend.onAdd = function () {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10, 20, 50, 100, 200, 500, 1000]
+        grades = [0, 10, 200, 500, 1000, 3000, 5000, 7000]
 
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=

@@ -3,7 +3,8 @@ from api.serializers import HuellaPaisSerializer , GasesMundialSerializer
 from api.serializers import EmisionesPaisSerializer, TemperaturaMundialSerializer
 from api.serializers import HuellaGasesTemperaturaMundialSerializer
 from api.serializers import PrediccionMundialSerializer, HuellaMundialSerializer
-from api.models import PaisMaestro
+from api.serializers import ConsumoSerializer, ProduccionSerializer
+from api.models import PaisMaestro, ConsumoPais, ProduccionPais
 from api.models import HuellaPais
 from api.models import EmisionesPais , TemperaturaMundial
 from api.models import MundialMaestro ,GasesMundial
@@ -18,7 +19,7 @@ class PaisConInformacionApiView(generics.ListAPIView):
     serializer_class = PaisConInformacionSerializer
 
     def get_queryset(self):
-        queryset = PaisMaestro.objects.all()
+        queryset = PaisMaestro.objects.all()[:3]
         return queryset
 
 
@@ -97,7 +98,7 @@ class HuellaGasesTemperaturaMundialApiView(generics.ListAPIView):
     serializer_class = HuellaGasesTemperaturaMundialSerializer
 
     def get_queryset(self):
-        queryset = MundialMaestro.objects.all()
+        queryset = MundialMaestro.objects.all()[:3]
         return queryset
 
 class PrediccionMundialApiView(generics.ListAPIView):
@@ -109,4 +110,19 @@ class PrediccionMundialApiView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = PrediccionMundial.objects.all()
+        return queryset
+
+
+class ConsumoApiView(generics.ListAPIView):
+    serializer_class = ConsumoSerializer
+
+    def get_queryset(self):
+        queryset = ConsumoPais.objects.all()
+        return queryset
+
+class ProduccionApiView(generics.ListAPIView):
+    serializer_class = ProduccionSerializer
+
+    def get_queryset(self):
+        queryset = ProduccionPais.objects.all()
         return queryset

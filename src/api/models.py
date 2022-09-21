@@ -14,7 +14,6 @@ class InformacionPais(models.Model):
     pais = models.ForeignKey('PaisMaestro', on_delete=models.PROTECT,related_name='pais_informacion')
     anio = models.FloatField(blank=True, null=True)
     poblacion = models.FloatField(blank=True, null=True)
-    pbi = models.FloatField(blank=True, null=True)
     gen_elect = models.FloatField(blank=True, null=True)
     dem_elect = models.FloatField(blank=True, null=True)
 

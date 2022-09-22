@@ -8,6 +8,7 @@ from api.api import HuellaMundialApiView
 from api.api import GasesMundialApiView
 from api.api import TemperaturaMundialApiView
 from api.views import apiGeoJson
+from api.api import ConsumoApiView, ProduccionApiView
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -26,6 +27,8 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path('consumo', ConsumoApiView.as_view(), name='consumo'),
+    path('produccion', ProduccionApiView.as_view(), name='produccion'),
     path('pais_general', PaisConInformacionApiView.as_view(), name='pais_general'),#x
     path('huella_pais', HuellaPaisApiView.as_view(), name='huella_pais'), #x
     path('huella_mundial', HuellaMundialApiView.as_view(), name='huella_mundial'), ########

@@ -17,6 +17,17 @@ class InformacionPaisSerializer(serializers.ModelSerializer):
         model = InformacionPais
         fields = '__all__'
 
+
+class ConsumoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConsumoPais
+        exclude = ('informacion',)
+
+class ProduccionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProduccionPais
+        exclude = ('informacion',)
+
 class ConsumoPaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = ConsumoPais

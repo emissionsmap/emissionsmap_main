@@ -96,7 +96,6 @@ legend.onAdd = function () {
 };
 legend.addTo(mapamundi);
 
-
 function pintadoDeMapa(otrorandommas){
 
     function style(feature) {
@@ -109,7 +108,6 @@ function pintadoDeMapa(otrorandommas){
     return {fillColor: getColor(data)};             
         
 }
-
     let layer =  L.geoJson(jsonmundo, {
         onEachFeature: popup,
         style: style,
@@ -120,14 +118,10 @@ function pintadoDeMapa(otrorandommas){
         fillOpacity: 0.7
     });
 layer.addTo(mapamundi);
-
 }
 pintadoDeMapa(2019)
 
-// document.querySelector('#items__timeline').onclick  = e => {
-//     const { value: property} = e.target
-//     pintadoDeMapa(property)
-// }
+
 const updateChart = (var1,var2,var3,var4) => {
     document.querySelector('#items__timeline').onclick  = e => {
         const { value: property} = e.target
@@ -169,7 +163,7 @@ const updateChart = (var1,var2,var3,var4) => {
 // *************************************************************************
 // *************************************************************************
 
-// ----------------------------default------------------------------------
+// ----------------------------default chart------------------------------------
 const styles = {
     color: {
         solids: ['rgba(116, 72, 194, 1)', 'rgba(33, 192, 215, 1)', 'rgba(217, 158, 43, 1)', 'rgba(205, 58, 129, 1)', 'rgba(156, 153, 204, 1)', 'rgba(225, 78, 202, 1)',
@@ -331,18 +325,8 @@ const chartcountrybar = document.getElementById('chart5').getContext('2d');
 const chartcountryradar = document.getElementById('chart6').getContext('2d');
 
 let huellaactual,consumopais,produccionpais;
-
 let radarrandom;
 let barrandom;
-
-// function graficoConFechas(titulo,cantidad,tipo,encabezado,id) {
-        
-//     var ctx = document.getElementById(id).getContext('2d');
-//     if (myChart) {
-//         myChart.destroy();
-//     }
-//     myChart = new Chart(ctx, { ...};
-// }
 
 const countryRadarChart = e => {
     
@@ -423,5 +407,4 @@ var mifuncion = function(parametro){
     countryBarChart(produccionpais)
     updateChart(consumopais,produccionpais,topPaises,emisonescontinente)
 }
-
 mifuncion('PER')

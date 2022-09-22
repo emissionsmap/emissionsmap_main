@@ -23,7 +23,7 @@ body {
 header {
     z-index: 100;
     position: fixed;
-    height: 8vh;
+    height: 60px;
     width: 100vw;
     background: var(--default-bg-color);
     background: -webkit-linear-gradient(to top, #07374D, #000508);

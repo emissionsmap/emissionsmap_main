@@ -6,7 +6,7 @@
   letter-spacing: 1px;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 92vh;
+  height: 97vh;
 }
 .container__aside {
   width: 76vw;
@@ -67,6 +67,10 @@ canvas {
   min-width: 200px;
 }
 
+#chart1{
+  max-height: 300px;
+}
+
 #chart5,
 #chart6 {
   max-height: 300px;
@@ -120,7 +124,6 @@ canvas {
 .container__aside__chart .chart {
   width: calc(100% / 2 - 2em);
   transition: all 0.4s ease;
-  /* min-width: 400px; */
 }
 
 .carrousel {

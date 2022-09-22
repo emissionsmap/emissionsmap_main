@@ -7,8 +7,9 @@ from api.api import PrediccionMundialApiView
 from api.api import HuellaMundialApiView
 from api.api import GasesMundialApiView
 from api.api import TemperaturaMundialApiView
-from api.views import apiGeoJson
+from api.views import apiGeoJson, topContinentes
 from api.api import ConsumoApiView, ProduccionApiView
+from api.api import EmisionesContinenteApiView
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -27,6 +28,7 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path('emisiones_continente', EmisionesContinenteApiView().as_view(), name='emisiones_continente'),
     path('consumo', ConsumoApiView.as_view(), name='consumo'),
     path('produccion', ProduccionApiView.as_view(), name='produccion'),
     path('pais_general', PaisConInformacionApiView.as_view(), name='pais_general'),#x
@@ -38,5 +40,6 @@ urlpatterns = [
     path('mundial_general', HuellaGasesTemperaturaMundialApiView.as_view(), name='mundial_general'),#x
     path('prediccion_mundial', PrediccionMundialApiView.as_view(), name='prediccion_mundial'), ########
     path('geojson', apiGeoJson, name='geojson'),########
+    path('top10', topContinentes, name='top10'),
     path('', schema_view.with_ui('redoc',cache_timeout=0), name='doc'),########
 ]

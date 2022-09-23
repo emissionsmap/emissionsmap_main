@@ -45,7 +45,7 @@ class ConsumoProduccionInformacionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = InformacionPais
-        fields = ['anio','poblacion','pbi','gen_elect','dem_elect','consumo','produccion']
+        fields = ['anio','poblacion','gen_elect','dem_elect','consumo','produccion']
 
 class PaisConInformacionSerializer(serializers.ModelSerializer):
     informacion = ConsumoProduccionInformacionSerializer(many=True, source='pais_informacion')

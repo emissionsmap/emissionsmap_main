@@ -50,14 +50,12 @@ nav {
 
   nav ul{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
   }
   nav ul li a {
     color: var(--white-text-color);
     font-weight: 800;
     text-transform: uppercase;
-    grid-template-columns: 50% 50%;
-
   }
   nav ul li a,
   nav ul li a:after,

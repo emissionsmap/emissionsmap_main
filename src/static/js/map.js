@@ -236,7 +236,7 @@ const pieChartWorld = e => {
     const data = {
         labels: e.map(m => m.continente),
         datasets: [
-            {
+            {   
                 data:e.map(m => m.n2019),
                 borderWidth: 1,
                 borderColor: styles.color.solids.map(eachColor => eachColor),
@@ -258,6 +258,7 @@ const barChartWorld = e => {
     const data = {
         labels: e.filter(m => m.anio === 2019).map(m => m.paises)[0],
         datasets: [{
+            label: 'Emisiones GHG (MtCO₂e)',
             data: e.filter(m => m.anio === 2019).map(m => m.emisiones)[0],
             borderColor: styles.color.solids.map(eachColor => eachColor),
             backgroundColor: styles.color.alphas.map(eachColor => eachColor)
@@ -337,7 +338,7 @@ const countryRadarChart = e => {
     const data = {
         labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
         datasets: [{
-            label: 'Energia (tvh)',
+            label: 'Energia (TW/h)',
             data: 
             [e.filter(m => m.anio == 2021).map(m => m.petroleo)[0],
             e.filter(m => m.anio == 2021).map(m => m.carbon)[0],
@@ -371,7 +372,7 @@ const countryBarChart = e => {
     const data = {
         labels: ['Petróleo','Carbón','Gas Natural','Nuclear','Hidráulica','Solar','Eólica','Otros Renovables'],
         datasets: [{
-            label: 'Energia (tvh)',
+            label: 'Energia (TW/h)',
             data: 
             [e.filter(m => m.anio == 2021).map(m => m.petroleo)[0],
             e.filter(m => m.anio == 2021).map(m => m.carbon)[0],

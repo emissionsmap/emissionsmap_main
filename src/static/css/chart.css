@@ -166,9 +166,3 @@ canvas {
 .carrousel .punto.activo {
   background-color: rgb(102, 102, 102);
 }
-
-.number_kpi{
-  font-size: 30px;
-  font-size: 500px;
-  color: var(--text-secondary-color)
-}

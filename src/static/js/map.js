@@ -13,8 +13,8 @@ function getColor(d) {
 // get leaflet and configuration
 var mapamundi = L.map('map',{ zoomControl: false }).setView([51.505, -0.09], 3);
 
-var southWest = L.latLng(-50.98155760646617, -180),
-northEast = L.latLng(82.99346179538875, 180);
+var southWest = L.latLng(-50, -180),
+northEast = L.latLng(90, 180);
 var bounds = L.latLngBounds(southWest, northEast);
 
 mapamundi.setMaxBounds(bounds);
@@ -168,8 +168,8 @@ const styles = {
     color: {
         solids: ['rgba(116, 72, 194, 1)', 'rgba(33, 192, 215, 1)', 'rgba(217, 158, 43, 1)', 'rgba(205, 58, 129, 1)', 'rgba(156, 153, 204, 1)', 'rgba(225, 78, 202, 1)',
         'rgba(116, 72, 194, 1)', 'rgba(33, 192, 215, 1)', 'rgba(217, 158, 43, 1)', 'rgba(205, 58, 129, 1)', 'rgba(156, 153, 204, 1)', 'rgba(225, 78, 202, 1)'],
-        alphas: ['rgba(116, 72, 194, .5)', 'rgba(33, 192, 215, .5)', 'rgba(217, 158, 43, .5)', 'rgba(205, 58, 129, .5)', 'rgba(156, 153, 204, .5)', 'rgba(225, 78, 202, .5)',
-        'rgba(116, 72, 194, .5)', 'rgba(33, 192, 215, .5)', 'rgba(217, 158, 43, .5)', 'rgba(205, 58, 129, .5)', 'rgba(156, 153, 204, .5)', 'rgba(225, 78, 202, .5)']
+        alphas: ['rgba(116, 72, 194, .4)', 'rgba(33, 192, 215, .4)', 'rgba(217, 158, 43, .4)', 'rgba(205, 58, 129, .4)', 'rgba(156, 153, 204, .4)', 'rgba(225, 78, 202, .4)',
+        'rgba(116, 72, 194, .4)', 'rgba(33, 192, 215, .4)', 'rgba(217, 158, 43, .4)', 'rgba(205, 58, 129, .4)', 'rgba(156, 153, 204, .4)', 'rgba(225, 78, 202, .4)']
     }
 }
 Chart.defaults.font.size = 18;
@@ -244,9 +244,9 @@ const pieChartWorld = e => {
             }]}
 
     const options = {
-        legend: {
-            position: 'right'
-        },
+          scales:{
+            r:{ticks:{display:false}}
+          }
         }
 
     new Chart(chartpieworld, { type: 'polarArea', data, options })
@@ -259,14 +259,14 @@ const barChartWorld = e => {
         labels: e.filter(m => m.anio === 2019).map(m => m.paises)[0],
         datasets: [{
             data: e.filter(m => m.anio === 2019).map(m => m.emisiones)[0],
-            backgroundColor: styles.color.alphas,
-            borderColor: styles.color.solids
+            borderColor: styles.color.solids.map(eachColor => eachColor),
+            backgroundColor: styles.color.alphas.map(eachColor => eachColor)
         }]}
 
     const options = {
-        legend: {
-            display: false
-        },
+        plugins:{
+            legend:{display:false}
+        }
         }
 
     new Chart(charttopbar, { type: 'bar', data, options })
@@ -302,7 +302,7 @@ const line2Chart = e => {
                 data: e.map(m => m.biocapacidad),
             },
             {
-                label: 'e Ecológica PerCápíta',
+                label: 'Ecológica PerCápíta',
                 borderColor: styles.color.solids[4],
                 data:e.map(m => m.huella_ecologica),
             }]}
@@ -386,6 +386,9 @@ const countryBarChart = e => {
         }]}
     const options = {
             indexAxis: 'y',
+            plugins:{
+                legend:{display:false}
+            }
           };
 
     barrandom = new Chart(chartcountrybar, { type: 'bar', data, options })

@@ -4,8 +4,9 @@ from api.serializers import EmisionesPaisSerializer, TemperaturaMundialSerialize
 from api.serializers import HuellaGasesTemperaturaMundialSerializer
 from api.serializers import PrediccionMundialSerializer, HuellaMundialSerializer
 from api.serializers import ConsumoSerializer, ProduccionSerializer
+from api.serializers import EmisionesContinenteSerializer
 from api.models import PaisMaestro, ConsumoPais, ProduccionPais
-from api.models import HuellaPais
+from api.models import HuellaPais, EmisionesContinente
 from api.models import EmisionesPais , TemperaturaMundial
 from api.models import MundialMaestro ,GasesMundial
 from api.models import PrediccionMundial ,HuellaMundial
@@ -125,4 +126,11 @@ class ProduccionApiView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = ProduccionPais.objects.all()
+        return queryset
+
+class EmisionesContinenteApiView(generics.ListAPIView):
+    serializer_class = EmisionesContinenteSerializer
+
+    def get_queryset(self):
+        queryset = EmisionesContinente.objects.all()
         return queryset

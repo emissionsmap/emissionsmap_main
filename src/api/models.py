@@ -172,3 +172,31 @@ class PrediccionMundial(models.Model):
     class Meta:
         managed = False
         db_table = 'prediccion_mundial'
+
+class EmisionesContinente(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    continente = models.CharField(max_length=100)
+    n2019 = models.FloatField(db_column='2019')
+    n2018 = models.FloatField(db_column='2018')
+    n2017 = models.FloatField(db_column='2017')
+    n2016 = models.FloatField(db_column='2016')
+    n2015 = models.FloatField(db_column='2015')
+    n2014 = models.FloatField(db_column='2014')
+    n2013 = models.FloatField(db_column='2013')
+    n2012 = models.FloatField(db_column='2012')
+    n2011 = models.FloatField(db_column='2011')
+    n2010 = models.FloatField(db_column='2010')
+    n2009 = models.FloatField(db_column='2009')
+    n2008 = models.FloatField(db_column='2008')
+    n2007 = models.FloatField(db_column='2007')
+    n2006 = models.FloatField(db_column='2006')
+    n2005 = models.FloatField(db_column='2005')
+    n2004 = models.FloatField(db_column='2004')
+    n2003 = models.FloatField(db_column='2003')
+    n2002 = models.FloatField(db_column='2002')
+    n2001 = models.FloatField(db_column='2001')
+    n2000 = models.FloatField(db_column='2000')
+
+    class Meta:
+        managed = False
+        db_table = 'emisiones_continente'
